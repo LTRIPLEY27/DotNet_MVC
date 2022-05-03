@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;  // ADICIÒN DE SWAGGER
+using PizzaStore.DB;
 
 
 var builder = WebApplication.CreateBuilder(args); // GENERADOR QUE CREA LA INSTANCIA DE LA APP
@@ -28,5 +29,17 @@ app.UseSwaggerUI(c =>
 /// /FINAL DEL BLOQUE SWAGGER
 /// </summary>
 app.MapGet("/", () => "Hello World!");
+
+
+/// <summary>
+/// INSERCIÒN DE LA DATABASE Y CONTROLLERS
+/// </summary>
+/// 
+
+app.MapGet("/pizzas/{id}", (int id) => PizzaDB.GetPizza(id)); 
+app.MapGet("/pizzas", () => PizzaDB.GetPizzas());
+app.MapPost("/pizzas", (Pizza pizza) => PizzaDB.CreatePizza(pizza));
+app.MapPut("/pizzas", (Pizza pizza) => PizzaDB.UpdatePizza(pizza));
+app.MapDelete("/pizzas/{id}", (int id) => PizzaDB.RemovePizza(id));
 
 app.Run();
