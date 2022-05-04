@@ -32,7 +32,7 @@ app.MapGet("/", () => "Hello World!");
 
 
 /// <summary>
-/// INSERCIÒN DE LA DATABASE Y CONTROLLERS
+/// INSERCIÒN DE LA DATABASE Y CONTROLLERS, MAPPING DIRECTO DE .NET
 /// </summary>
 /// 
 
